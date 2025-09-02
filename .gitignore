@@ -21,7 +21,7 @@
 # Debugger Files
 *.pdb
 
-# Compiled Dynamic libraries
+# Compiled Dynamic libraries (忽略所有 DLL，除非在 Release 文件夹)
 *.so
 *.dylib
 *.dll
@@ -32,7 +32,7 @@
 *.a
 *.lib
 
-# Executables
+# Executables (默认忽略，Release 文件夹允许)
 *.exe
 *.out
 *.app
@@ -49,8 +49,9 @@
 *.pro.user.*
 *.qmake.stash
 
-# Qt Creator 构建目录（如果用 build-xxx）
+# Qt Creator 构建目录（忽略所有 build-*, 但保留 Release）
 build-*/
+!build-*/Release/**
 
 # CMake 构建目录（如果使用 CMake）
 CMakeFiles/
