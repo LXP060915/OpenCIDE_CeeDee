@@ -1,0 +1,532 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout" name="verticalLayout_2">
+    <item>
+     <widget class="QTabWidget" name="tabWidget">
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">/* Tab 内容区，添加背景图和透明度 */
+
+
+
+
+/* TabBar 上的每个 tab */
+QTabBar::tab {
+    background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                                stop:0 #e0e0e0, stop:1 #c8c8c8);
+    color: #333;
+    padding: 8px 18px;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    margin-right: 2px;
+}
+
+/* 鼠标悬停效果 */
+QTabBar::tab:hover {
+    background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                                stop:0 #d0d0d0, stop:1 #b8b8b8);
+}
+
+/* 选中状态的 tab */
+QTabBar::tab:selected {
+    background: #f0f0f0;
+    border-bottom: 3px solid #4CAF50;
+    color: #000;
+}
+
+/* 未选中状态 tab 的上边框微调 */
+QTabBar::tab:!selected {
+    margin-top: 3px;
+}
+
+/* TabBar 默认靠左排列 */
+QTabWidget::tab-bar {
+    alignment: left;
+}
+
+</string>
+      </property>
+      <property name="currentIndex">
+       <number>-1</number>
+      </property>
+      <property name="tabsClosable">
+       <bool>true</bool>
+      </property>
+      <property name="movable">
+       <bool>true</bool>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>800</width>
+     <height>36</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">/* ---------- 菜单栏 ---------- */
+QMenuBar {
+    background-color: #f5faff;      /* 浅白，微蓝调 */
+    color: #1a1a1a;                 /* 深灰字体，保证可读性 */
+    padding: 4px;
+}
+
+QMenuBar::item {
+    background: transparent;        /* 默认透明背景 */
+    padding: 6px 12px;              /* 内边距 */
+}
+
+QMenuBar::item:selected {
+    background-color: #cce4ff;      /* 鼠标悬停：浅蓝高亮 */
+    color: #003366;                 /* 深蓝文字 */
+}
+
+/* ---------- 下拉菜单 ---------- */
+QMenu {
+    background-color: #f8fbff;      /* 下拉菜单背景：浅白微蓝 */
+    color: #1a1a1a;                 /* 文字颜色深灰 */
+    border: 1px solid #aaccee;      /* 边框：淡蓝 */
+}
+
+QMenu::item {
+    padding: 6px 20px;
+}
+
+QMenu::item:selected {
+    background-color: #cce4ff;      /* 下拉菜单悬停：浅蓝高亮 */
+    color: #003366;                 /* 深蓝文字 */
+}
+</string>
+   </property>
+   <widget class="QMenu" name="menuFile">
+    <property name="title">
+     <string>File</string>
+    </property>
+    <addaction name="actionNew"/>
+    <addaction name="actionNewProject"/>
+    <addaction name="actionOpen"/>
+    <addaction name="actionOpenProject"/>
+    <addaction name="actionSave"/>
+    <addaction name="actionSave_As"/>
+    <addaction name="actionExit"/>
+   </widget>
+   <widget class="QMenu" name="menuSet">
+    <property name="title">
+     <string>Set</string>
+    </property>
+    <addaction name="separator"/>
+    <addaction name="actionFont"/>
+    <addaction name="actionColor"/>
+   </widget>
+   <widget class="QMenu" name="menuBuild">
+    <property name="title">
+     <string>Build</string>
+    </property>
+    <addaction name="separator"/>
+    <addaction name="actionCompile"/>
+    <addaction name="actionRun"/>
+   </widget>
+   <widget class="QMenu" name="menuTool">
+    <property name="title">
+     <string>Tool</string>
+    </property>
+    <addaction name="actionFindText"/>
+    <addaction name="actionFindNext"/>
+    <addaction name="actionFindPrevious"/>
+   </widget>
+   <widget class="QMenu" name="menuTest">
+    <property name="title">
+     <string>Test</string>
+    </property>
+    <addaction name="actionExit"/>
+   </widget>
+   <addaction name="menuFile"/>
+   <addaction name="menuBuild"/>
+   <addaction name="menuSet"/>
+   <addaction name="menuTool"/>
+   <addaction name="menuTest"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar">
+   <property name="styleSheet">
+    <string notr="true">/* ---------- 状态栏 ---------- */
+QStatusBar {
+    background-color: #f5faff;   /* 浅白偏蓝背景 */
+    color: #2a3b4c;              /* 深蓝灰文字 */
+    border-top: 1px solid #c0d0e0;  /* 顶部分割线（浅蓝灰） */
+    padding: 2px 4px;
+}
+
+QStatusBar QLabel {
+    color: #2a3b4c;              /* 状态栏上文字标签 */
+}
+</string>
+   </property>
+  </widget>
+  <widget class="QToolBar" name="toolBar">
+   <property name="windowTitle">
+    <string>toolBar</string>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">/* ---------- 工具栏 ---------- */
+QToolBar {
+    background-color: #e6f0fa;       /* 淡蓝色背景，比白色柔和 */
+    spacing: 6px;                     
+    padding: 2px;
+    border: none;
+    font-family: &quot;JetBrains Mono&quot;, monospace;  /* 与输出窗口统一字体 */
+    font-size: 15px;                           /* 适中字体大小 */
+}
+
+QToolButton {
+    background-color: transparent;
+    color: #1a1a1a;                  /* 深灰文字，保证可读性 */
+    border: none;
+    padding: 4px 8px;
+}
+
+QToolButton:hover {
+    background-color: #cce4ff;        /* 鼠标悬停：柔和浅蓝 */
+    color: #003366;                   /* 深蓝文字/图标 */
+    border-radius: 4px;
+}
+
+QToolButton:pressed {
+    background-color: #aaccee;        /* 按下：稍深的浅蓝 */
+    color: #003366;
+}
+
+QToolButton::menu-indicator {
+    image: url(:/icons/arrow-down.png); /* 下拉箭头图标 */
+}
+</string>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="actionNew"/>
+   <addaction name="actionOpen"/>
+   <addaction name="actionSave"/>
+   <addaction name="separator"/>
+   <addaction name="actionCompile"/>
+   <addaction name="actionRun"/>
+   <addaction name="separator"/>
+   <addaction name="actionFindText"/>
+   <addaction name="actionAIImprove"/>
+   <addaction name="actionExit"/>
+  </widget>
+  <widget class="QDockWidget" name="projectDock">
+   <property name="windowTitle">
+    <string>项目</string>
+   </property>
+   <attribute name="dockWidgetArea">
+    <number>1</number>
+   </attribute>
+   <widget class="QWidget" name="dockWidgetContents">
+    <layout class="QVBoxLayout" name="verticalLayout">
+     <item>
+      <widget class="QTreeView" name="projectTree"/>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+  <widget class="QDockWidget" name="dockOutput">
+   <property name="allowedAreas">
+    <set>Qt::BottomDockWidgetArea</set>
+   </property>
+   <property name="windowTitle">
+    <string>编译输出</string>
+   </property>
+   <attribute name="dockWidgetArea">
+    <number>8</number>
+   </attribute>
+   <widget class="QWidget" name="dockWidgetContents_2">
+    <layout class="QVBoxLayout" name="verticalLayout_3">
+     <item>
+      <widget class="QPlainTextEdit" name="outputWindow">
+       <property name="styleSheet">
+        <string notr="true">QPlainTextEdit {
+    background: #ffffff;                        
+    color: #2d2d2d;                             
+    border: 1px solid #cccccc;                  
+    border-radius: 6px;                         
+    padding: 8px;                               
+    font-family: &quot;SimSun&quot;, &quot;新宋体&quot;, &quot;JetBrains Mono&quot;, Consolas, &quot;Courier New&quot;, monospace; 
+    font-size: 22px;                            
+    line-height: 1.4;                           
+    
+    selection-background-color: #cce5ff;
+    selection-color: #000000;
+}
+</string>
+       </property>
+       <property name="readOnly">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+  <widget class="QDockWidget" name="aiChatDock">
+   <property name="allowedAreas">
+    <set>Qt::BottomDockWidgetArea|Qt::RightDockWidgetArea</set>
+   </property>
+   <attribute name="dockWidgetArea">
+    <number>2</number>
+   </attribute>
+   <widget class="QWidget" name="dockWidgetContents_3">
+    <property name="maximumSize">
+     <size>
+      <width>500</width>
+      <height>16777215</height>
+     </size>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QDockWidget {
+    background: #f0f8ff; /* 淡蓝色 */
+    titlebar-close-icon: url(:/icons/close.png);
+    titlebar-normal-icon: url(:/icons/undock.png);
+}
+QDockWidget::title {
+    background: #d0e7ff;
+    text-align: left;
+    padding-left: 8px;
+    font-family: &quot;SimSun&quot;;
+    font-size: 14px;
+    color: #003366;
+}
+</string>
+    </property>
+    <layout class="QVBoxLayout" name="verticalLayout_4">
+     <item>
+      <widget class="QWidget" name="widget" native="true">
+       <property name="styleSheet">
+        <string notr="true"/>
+       </property>
+       <layout class="QVBoxLayout" name="verticalLayout_5">
+        <item>
+         <widget class="QPlainTextEdit" name="aiChatOutput">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="autoFillBackground">
+           <bool>false</bool>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QPlainTextEdit {
+    background: #ffffff;
+    color: #2d2d2d;
+    border: 1px solid #cccccc;
+    border-radius: 6px;
+    padding: 8px;
+    font-family: &quot;JetBrains Mono&quot;, &quot;SimSun&quot;, Consolas, monospace;
+    font-size: 16px;
+    line-height: 1.4;
+    selection-background-color: #cce5ff;
+    selection-color: #000000;
+}
+</string>
+          </property>
+          <property name="readOnly">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="btnClearHistory">
+          <property name="text">
+           <string>新建对话</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPlainTextEdit" name="aiChatInput">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>16777215</width>
+            <height>60</height>
+           </size>
+          </property>
+          <property name="backgroundVisible">
+           <bool>false</bool>
+          </property>
+          <property name="centerOnScroll">
+           <bool>false</bool>
+          </property>
+          <property name="placeholderText">
+           <string>在这里输入你的问题，按 Enter 发送给 AI </string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+  <action name="actionNew">
+   <property name="icon">
+    <iconset resource="Source.qrc">
+     <normaloff>:/new/prefix1/images/icons8-add-file-50.png</normaloff>:/new/prefix1/images/icons8-add-file-50.png</iconset>
+   </property>
+   <property name="text">
+    <string>NewFile</string>
+   </property>
+  </action>
+  <action name="actionOpen">
+   <property name="icon">
+    <iconset resource="Source.qrc">
+     <normaloff>:/new/prefix1/images/icons8-file-50.png</normaloff>:/new/prefix1/images/icons8-file-50.png</iconset>
+   </property>
+   <property name="text">
+    <string>OpenFile</string>
+   </property>
+  </action>
+  <action name="actionSave">
+   <property name="icon">
+    <iconset resource="Source.qrc">
+     <normaloff>:/new/prefix1/images/icons8-save-50.png</normaloff>
+     <normalon>:/new/prefix1/images/icons8-save-50.png</normalon>:/new/prefix1/images/icons8-save-50.png</iconset>
+   </property>
+   <property name="text">
+    <string>Save</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+S</string>
+   </property>
+  </action>
+  <action name="actionExit">
+   <property name="text">
+    <string>Exit</string>
+   </property>
+  </action>
+  <action name="actionFont">
+   <property name="text">
+    <string>Font</string>
+   </property>
+  </action>
+  <action name="actionColor">
+   <property name="text">
+    <string>Color</string>
+   </property>
+  </action>
+  <action name="actionFindText">
+   <property name="icon">
+    <iconset resource="Source.qrc">
+     <normaloff>:/new/prefix1/images/icons8-search-50.png</normaloff>:/new/prefix1/images/icons8-search-50.png</iconset>
+   </property>
+   <property name="text">
+    <string>FindText</string>
+   </property>
+   <property name="toolTip">
+    <string>FindText</string>
+   </property>
+  </action>
+  <action name="actionSave_As">
+   <property name="text">
+    <string>Save As</string>
+   </property>
+  </action>
+  <action name="actionCompile">
+   <property name="text">
+    <string>Compile</string>
+   </property>
+   <property name="shortcut">
+    <string>F9</string>
+   </property>
+  </action>
+  <action name="actionRun">
+   <property name="text">
+    <string>Run</string>
+   </property>
+   <property name="shortcut">
+    <string>F10</string>
+   </property>
+  </action>
+  <action name="actionFindPrevious">
+   <property name="text">
+    <string>FindPrevious</string>
+   </property>
+   <property name="toolTip">
+    <string>FindPrevious</string>
+   </property>
+  </action>
+  <action name="actionFindNext">
+   <property name="text">
+    <string>FindNext</string>
+   </property>
+   <property name="toolTip">
+    <string>FindNext</string>
+   </property>
+  </action>
+  <action name="actionOpenProject">
+   <property name="icon">
+    <iconset resource="Source.qrc">
+     <normaloff>:/new/prefix1/images/icons8-opened-folder-50.png</normaloff>:/new/prefix1/images/icons8-opened-folder-50.png</iconset>
+   </property>
+   <property name="text">
+    <string>OpenProject</string>
+   </property>
+   <property name="toolTip">
+    <string>OpenProject</string>
+   </property>
+  </action>
+  <action name="actionNewProject">
+   <property name="icon">
+    <iconset resource="Source.qrc">
+     <normaloff>:/new/prefix1/images/icons8-folder-50.png</normaloff>:/new/prefix1/images/icons8-folder-50.png</iconset>
+   </property>
+   <property name="text">
+    <string>NewProject</string>
+   </property>
+  </action>
+  <action name="actionAIImprove">
+   <property name="text">
+    <string>AIImprove</string>
+   </property>
+  </action>
+ </widget>
+ <resources>
+  <include location="Source.qrc"/>
+ </resources>
+ <connections/>
+</ui>
