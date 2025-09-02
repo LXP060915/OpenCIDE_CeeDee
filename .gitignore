@@ -1,3 +1,7 @@
+# =========================
+# C/C++ 通用编译产物
+# =========================
+
 # Prerequisites
 *.d
 
@@ -22,10 +26,6 @@
 *.dylib
 *.dll
 
-# Fortran module files
-*.mod
-*.smod
-
 # Compiled Static libraries
 *.lai
 *.la
@@ -37,5 +37,35 @@
 *.out
 *.app
 
-# debug information files
+# Debug information files
 *.dwo
+
+# =========================
+# Qt / IDE 文件
+# =========================
+
+# Qt Creator 项目文件
+*.pro.user
+*.pro.user.*
+*.qmake.stash
+
+# Qt Creator 构建目录（如果用 build-xxx）
+build-*/
+
+# CMake 构建目录（如果使用 CMake）
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+
+# IDE / 编辑器
+*.user
+*.suo
+.vscode/
+.idea/
+
+# =========================
+# 系统临时文件
+# =========================
+.DS_Store
+Thumbs.db
