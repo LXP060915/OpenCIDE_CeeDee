@@ -1,2 +1,2 @@
-# OpenCIDE_CeeDee
+# OpenCIDE_Orion++
 CIDE is a minimalistic yet powerful C/C++ IDE designed for developers who want a fast, reliable, and customizable coding experience
